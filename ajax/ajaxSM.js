@@ -2,7 +2,7 @@ var ajax = function (user) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4) {
-            if (xmlhttp.status == 200) {
+            if (xmlhttp.status == 200 && user.success) {
                 user.success(user.parse ? JSON.parse(xmlhttp.responseText) : xmlhttp.responseText);
             }
             else {
