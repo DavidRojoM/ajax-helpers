@@ -11,12 +11,7 @@ const ajax = (user) => {
         } else {
           function other(error, text) {
             console.error(
-              "ajaxSM: Error on ajax call to " +
-                user.url +
-                " " +
-                error +
-                " - " +
-                text
+              `ajaxSM: Error on ajax call to ${user.url} ${error} - ${text}`
             );
           }
 
@@ -64,6 +59,7 @@ const ajax = (user) => {
       user.error[status](user.url, status, status);
     });
 };
+
 ajax({
   url: "http://localhost:3000/api/v1/contacts/",
   type: "GET",
@@ -84,7 +80,7 @@ ajax({
       alert(`${url} hasn't been found\n ${errorCode} : ${errorDescription}`);
     },
     other: function (url, errorCode, errorDescription) {
-      console.log("Unrecognized error\n" + errorCode + ": " + errorDescription);
+      console.log(`Unrecognized error\n${errorCode} : ${errorDescription}`);
     },
   },
 });
