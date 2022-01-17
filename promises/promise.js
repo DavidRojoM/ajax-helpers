@@ -3,8 +3,8 @@ const ajax = (user) => {
 
   new Promise((resolve, reject) => {
     xmlhttp.onreadystatechange = () => {
-      if (xmlhttp.readyState == 4) {
-        if (xmlhttp.status == 200 && user.success) {
+      if (xmlhttp.readyState === 4) {
+        if (xmlhttp.status === 200 && user.success) {
           resolve(
             user.parse ? JSON.parse(xmlhttp.responseText) : xmlhttp.responseText
           );
@@ -49,7 +49,7 @@ const ajax = (user) => {
         "Content-type",
         "application/x-www-form-urlencoded"
       );
-      xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+      // xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
     }
     xmlhttp.send(sent);
   })
@@ -69,13 +69,13 @@ ajax({
   type: "GET",
   parse: true,
   async: true,
-  // data: { firstName: "John", lastName: "Doe" },
+  data: { firstName: "Foo", lastName: "Bar" },
   success: function (data) {
     console.log(data);
   },
   error: {
     0: function () {
-      alert("Error de CORS");
+      alert("No response or CORS error");
     },
     403: function (url) {
       alert(`Forbidden access to ${url}`);
